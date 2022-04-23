@@ -82,10 +82,7 @@ void sume(Node* root,int &sum)
 }
 int sumLeaf(Node* root)
 {
-     if(root==NULL)
-   {
-       return 0;
-   }
+   
     int sum=0;
      sume(root,sum);
      return sum;
