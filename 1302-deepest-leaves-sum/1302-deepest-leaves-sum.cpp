@@ -17,9 +17,9 @@ public:
                 {
                         return 0;
                 }
-               int lh=1+ height(root->left);
-                int rh=1+ height(root->right);
-                return max(lh,rh);
+               int lh=height(root->left);
+                int rh=height(root->right);
+                return 1+max(lh,rh);
                 
         }
         
