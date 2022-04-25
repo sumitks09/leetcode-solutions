@@ -23,26 +23,26 @@ public:
                 
         }
         
-        int leavessum(TreeNode* root,int depth,int present)
+        int leavessum(TreeNode* root,int depth)
         {
           int sum=0;
             if(root==nullptr)
             {
                     return 0;
             }
-            if(root->left==nullptr && root->right==nullptr && depth==present )
+            if(root->left==nullptr && root->right==nullptr && depth==1 )
             {
                     return root->val;
             }
-                sum+=leavessum(root->left,depth,present+1);
-                sum+=leavessum(root->right,depth,present+1);
+                sum+=leavessum(root->left,depth-1);
+                sum+=leavessum(root->right,depth-1);
             return sum;
         }
         
     int deepestLeavesSum(TreeNode* root) {
             
             int depth=height(root);
-            int ans= leavessum(root,depth,1);
+            int ans= leavessum(root,depth);
             return ans;
             
             
