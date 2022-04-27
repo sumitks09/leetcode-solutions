@@ -17,34 +17,29 @@ public:
                 {
                         return 0;
                 }
-               int lh=height(root->left);
+                int lh=height(root->left);
                 int rh=height(root->right);
                 return 1+max(lh,rh);
-                
         }
-        
-        int leavessum(TreeNode* root,int depth)
+        int solve(TreeNode* root,int depth)
         {
-          int sum=0;
-            if(root==nullptr)
+                if(root==nullptr)
             {
                     return 0;
             }
-            if(root->left==nullptr && root->right==nullptr && depth==1 )
+            int sum=0;
+            if(root->left==nullptr && root->right==nullptr && depth==1)
             {
                     return root->val;
             }
-                sum+=leavessum(root->left,depth-1);
-                sum+=leavessum(root->right,depth-1);
-            return sum;
+            sum+=solve(root->left,depth-1);
+            sum+=solve(root->right,depth-1);
+                return sum;
         }
-        
     int deepestLeavesSum(TreeNode* root) {
-            
-            int depth=height(root);
-            int ans= leavessum(root,depth);
-            return ans;
-            
+        int depth = height(root);
+            int result=solve(root,depth);
+            return result;
             
     }
 };
