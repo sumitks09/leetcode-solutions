@@ -1,66 +1,66 @@
 class Solution {
 public:
-        void merge(vector<int>& nums,int s,int e)
+        void mergesorted(vector<int>&nums,int i,int j)
         {
-                int i=s;
-                int m=(s+e)/2;
-                int j=m+1;
+                int m=i+((j-i)/2);
+                int s=i;
+                int e=m+1;
                 
                 vector<int>temp;
-                
-              while(i<=m&&j<=e)
-                 {
-                 if(nums[i]<nums[j])
-                 {
-                 temp.push_back(nums[i++]);   
-                 
+                while(s<=m&&e<=j)
+                {
+                        if(nums[s]<nums[e])
+                        {
+                                temp.push_back(nums[s]);
+                                s++;
+                        }
+                        else
+                        {
+                                temp.push_back(nums[e]);
+                                        e++;
+                        }
+                        
                 }
-               else
-                 {
-                 temp.push_back(nums[j++]);
-                 
-               }
-              }
-                      
-                      while(i<=m)
-                      {
-                              temp.push_back(nums[i++]);
-                              
-                      }
-                      while(j<=e)
-                      {
-                              temp.push_back(nums[j++]);
-                              
-                      }
-                      
-                      int k=0;
-                   for(int idx=s;idx<=e;idx++)
-                   {
-                           nums[idx]=temp[k++];
-                   }
-                      
-                     return; 
-            }
-
-        void mergesort(vector<int>& nums,int s,int e)
-        {
-        if(s>=e)
-        {
+                
+                while(s<=m)
+                {
+                        temp.push_back(nums[s]);
+                        s++;
+                }
+                while(e<=j)
+                {
+                        temp.push_back(nums[e]);
+                        e++;
+                }
+                
+                int k=0;
+                for(int idx=i;idx<=j;idx++)
+                {
+                        nums[idx]=temp[k++];
+                }
                 return;
         }
-                int mid=(s+e)/2;
-                mergesort(nums,s,mid);
-                mergesort(nums,mid+1,e);
+        
+        void solve(vector<int>&nums,int i,int j)
+        {
+                if(i>=j)
+                {
+                        return ;
+                }
+                int m=i+((j-i)/2);
+                solve(nums,i,m);
+                solve(nums,m+1,j);
                 
-                 return merge(nums,s,e);
+                return mergesorted(nums,i,j);
+                
+                
                 
         }
     vector<int> sortArray(vector<int>& nums) {
-            int s=0;
-            int e=nums.size()-1;
-            
-       mergesort(nums,s,e);
+            int i=0;
+            int j=nums.size()-1;
+            solve(nums,i,j);
             return nums;
-            
+        
     }
 };
