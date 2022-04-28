@@ -12,12 +12,12 @@
 class Solution {
 public:
     bool checkTree(TreeNode* root) {
-            bool ans=false;
-            if(root->val==root->left->val+root->right->val)
+            
+            if(root->val==(root->left->val+root->right->val))
             {
                     return true;
             }
-            return ans;
+            return false;
         
     }
 };
