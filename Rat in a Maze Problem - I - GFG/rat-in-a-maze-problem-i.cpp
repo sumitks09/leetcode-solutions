@@ -9,61 +9,66 @@ using namespace std;
 // User function template for C++
 
 class Solution{
-    public:
-   
-        
-        
-        vector<string> findPath(vector<vector<int>> &grid, int n) {
-        vector<string> paths;
-        string currentPath;
-        
-        GenerateAllPaths(grid, n, 0, 0, currentPath, paths);
-        
-        return paths;
-    }
-    
-    // Check currentPath Pass type
-    void GenerateAllPaths(vector<vector<int>> &grid, int &n, int currentRow, int currentCol, string &currentPath, vector<string> &paths) {
-        if(currentRow < 0 || currentRow >=n || currentCol < 0 || currentCol >=n) {
+    private:
+    void solve(vector<vector<int>> &grid, vector<string>&ans,string &output,int x,int y,int n)
+    {
+        if(x<0||y<0||x>=n||y>=n)
+        {
+            return;
+        }
+        if(grid[x][y]==0)
+        {
+            return;
+        }
+        if(x==n-1 && y==n-1)
+        {
+            ans.push_back(output);
             return;
         }
         
-        if(grid[currentRow][currentCol] == 0) {
-            return;
-        }
         
-        if(currentRow == n-1 && currentCol == n-1) {
-            paths.push_back(currentPath);
-            return;
-        }
         
-        grid[currentRow][currentCol] = 0;
+        //x=row
+        //y=column
         
-        // Down Movement
-        currentPath += "D";
-        GenerateAllPaths(grid, n, currentRow+1, currentCol, currentPath, paths);
-        currentPath.pop_back();
+        grid[x][y]=0;
         
-        // Left Movement
-        currentPath += "L";
-        GenerateAllPaths(grid, n, currentRow, currentCol-1, currentPath, paths);
-        currentPath.pop_back();
+        //down move
+        output+="D";
+        solve(grid,ans,output,x+1,y,n);
+        output.pop_back();
         
-        // Right Movement
-        currentPath += "R";
-        GenerateAllPaths(grid, n, currentRow, currentCol+1, currentPath, paths);
-        currentPath.pop_back();
+        output+="U";
+        //up move
+        solve(grid,ans,output,x-1,y,n);
+        output.pop_back();
         
-        // Up Movement
-        currentPath += "U";
-        GenerateAllPaths(grid, n, currentRow-1, currentCol, currentPath, paths);
-        currentPath.pop_back();
+        output+="R";
+        //right move
+        solve(grid,ans,output,x,y+1,n);
+        output.pop_back();
         
-        grid[currentRow][currentCol] = 1;
+        
+        output+="L";
+        //left move
+        solve(grid,ans,output,x,y-1,n);
+         output.pop_back();
+        
+        grid[x][y]=1;
         
         return;
+        
+        
     }
-    
+    public:
+    vector<string> findPath(vector<vector<int>> &grid, int n) {
+        vector<string>ans;
+        string output;
+        int x=0;
+        int y=0;
+        solve(grid,ans,output,x,y,n);
+        return ans;
+    }
 };
 
     
