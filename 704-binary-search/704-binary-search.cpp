@@ -1,31 +1,39 @@
 class Solution {
 public:
-        int solve(vector<int>& nums,int target)
+        int solve(vector<int>& nums,int target,int i,int j)
         {
-              int i=0;
-        int j=nums.size()-1;
-            while(i<=j)
-            {
-                    int mid=i+((j-i)/2);
+                int ans=-1;
+              if(j>=i)
+              {
+                    int mid=i+(j-i)/2;
                     
-                 if(target==nums[mid])
+                 if(nums[mid]==target)
                  {
                          return mid;
                  }
-                    else if(target<nums[mid])
-                    {
-                            j=mid-1;
-                    }
-                    else
-                    {
-                            i=mid+1;
-                    }
+                    if(nums[mid]>target)
                     
+                   ans= solve(nums,target,i,mid-1);
+                    if(ans!=-1)
+               {
+                   return ans;    
+                      }
+                    
+                      ans=  solve(nums,target,mid+1,j);    
+                    if(ans!=-1)
+               {
+                   return ans;    
+                      }
             }
+               
                 return -1;
         }
     int search(vector<int>& nums, int target) {
-       return solve(nums,target);
+            int i=0;
+        int j=nums.size()-1;
+       int ans=solve(nums,target,i,j);
+            return ans;
             
     }
 };
+
