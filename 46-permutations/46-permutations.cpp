@@ -5,6 +5,7 @@ class Solution {
 if(index>=nums.size())
        {
         ans.push_back(nums);
+        return;
         }
                 
                 for(int j=index;j<nums.size();j++)
