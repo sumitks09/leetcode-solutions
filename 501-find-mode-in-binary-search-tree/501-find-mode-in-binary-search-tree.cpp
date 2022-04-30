@@ -34,9 +34,9 @@ public:
             vector<int>ans1;
              solve(ans,root);
             if(ans.size()==1)
-            {
-                    ans1.push_back(ans[0]);
-            }
+            
+                   ans1.push_back(ans[0]);
+            
 unordered_map<int,int>memo;
             for(auto x:ans)
             {
