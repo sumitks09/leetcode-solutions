@@ -44,6 +44,7 @@ unordered_map<int,int>memo;
             
             
             int largest=INT_MIN;
+            
     for(auto i : memo)
     {
             largest=max(largest,i.second);
@@ -54,22 +55,7 @@ unordered_map<int,int>memo;
                    {
                            ans1.push_back(x.first);
                    }
-           }
-    
-  /*  for(auto i : memo)
-    {
-        if(max < i.second)
-        {
-            ans1.clear();
-            max = i.second;
-            ans1.push_back(i.first);
-        }
-        else if(max == i.second)
-            ans1.push_back(i.first);            
-    }
-            */
-            
-            
+           }          
                     return ans1;
     }
 };
