@@ -33,9 +33,7 @@ public:
             vector<int>ans;
             vector<int>ans1;
              solve(ans,root);
-            if(ans.size()==1)
             
-                   ans1.push_back(ans[0]);
             
 unordered_map<int,int>memo;
             for(auto x:ans)
@@ -44,10 +42,21 @@ unordered_map<int,int>memo;
             }
             
             
-            int max = -1;
-   
-    
+            
+            int largest=INT_MIN;
     for(auto i : memo)
+    {
+            largest=max(largest,i.second);
+    }
+           for(auto x:memo)
+           {
+                   if(x.second==largest)
+                   {
+                           ans1.push_back(x.first);
+                   }
+           }
+    
+  /*  for(auto i : memo)
     {
         if(max < i.second)
         {
@@ -58,6 +67,8 @@ unordered_map<int,int>memo;
         else if(max == i.second)
             ans1.push_back(i.first);            
     }
+            */
+            
             
                     return ans1;
     }
