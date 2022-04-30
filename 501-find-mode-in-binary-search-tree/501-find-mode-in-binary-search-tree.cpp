@@ -31,7 +31,7 @@ class Solution {
 public:
     vector<int> findMode(TreeNode* root) {
             vector<int>ans;
-            vector<int>ans1;
+            vector<int>result;
              solve(ans,root);
             
             
@@ -40,9 +40,6 @@ unordered_map<int,int>memo;
             {
                     memo[x]++;
             }
-            
-            
-            
             int largest=INT_MIN;
             
     for(auto i : memo)
@@ -53,9 +50,9 @@ unordered_map<int,int>memo;
            {
                    if(x.second==largest)
                    {
-                           ans1.push_back(x.first);
+                           result.push_back(x.first);
                    }
            }          
-                    return ans1;
+                    return result;
     }
 };
