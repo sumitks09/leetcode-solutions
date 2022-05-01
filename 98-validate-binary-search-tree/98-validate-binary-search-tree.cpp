@@ -11,7 +11,7 @@
  */
 class Solution {
         private:
-        bool solve(TreeNode* root,long min=LONG_MIN,long max=LONG_MAX)
+        bool solve(TreeNode* root,long min=LONG_MIN,long  max=LONG_MAX)
         {
                 if(root==nullptr)
                 {
