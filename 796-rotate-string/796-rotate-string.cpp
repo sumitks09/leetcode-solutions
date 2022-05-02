@@ -15,9 +15,9 @@ public:
             int k=goal.size();
             while(k--)
             {
-                    char ch=s2.front();
-                    s2.pop();
-                    s2.push(ch);
+                    char ch=s1.front();
+                    s1.pop();
+                    s1.push(ch);
                     if(s2==s1)
                     {
                             return true;
