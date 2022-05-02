@@ -11,29 +11,37 @@
  */
 class Solution {
         private:
-        bool solve(TreeNode* root,long min=LONG_MIN,long  max=LONG_MAX)
+        void solve(TreeNode* root,vector<int>&ans)
         {
-                if(root==nullptr)
-                {
-                        return true;
-                }
-                if(root->val<=min || root->val>=max)
-                {
-                        return false;
-                }
-                bool leftans=solve(root->left,min,root->val);
-                bool rightans=solve(root->right,root->val,max);
-                
-                return leftans && rightans;
-                
+        if(root==nullptr)
+        {
+                return;
+        }
+                solve(root->left,ans);
+                ans.push_back(root->val);
+                solve(root->right,ans);
+       
         }
         
+        bool issorted(vector<int>&ans,int n)
+        {
+                
+                for(int i=0;i<n-1;i++)
+                {
+                    if(ans[i]>=ans[i+1])
+                    {
+                            return false;
+                    }
+                }
+                return true;
+        }
 public:
-        
     bool isValidBST(TreeNode* root) {
-            bool result=solve(root);
+            vector<int>ans;
+            solve(root,ans);
+            int n=ans.size();
+            bool result=issorted(ans,n);
             return result;
-    }
         
+    }
 };
-
