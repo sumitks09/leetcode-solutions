@@ -20,8 +20,9 @@ for(int i=0;i<nums.size();i++)
                           if(abs(i-ans[j])<=k)
                           {
                                  result.insert(i);
+                                  
                           }
-                            
+                         
                     }                            
             }
            
