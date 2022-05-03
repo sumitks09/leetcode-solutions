@@ -10,29 +10,34 @@
  * };
  */
 class Solution {
+        int sum=0;
         private:
-        void solve(TreeNode* root,vector<int>&ans)
+        int solve(TreeNode* root, int low, int high)
         {
-            if(root==nullptr)
-            {
-                    return;
-            }
-                solve(root->left,ans);
-                ans.push_back(root->val);
-                solve(root->right,ans);
+          if(root)
+          {
+                 rangeSumBST(root->left,low,high);
+                  
+                 if(root->val>=low && root->val<=high)
+                   {
+                   sum+=root->val;
+                   }
+                  
+              rangeSumBST(root->right,low,high);
+          }
+        return sum;    
         }
+        
+        
 public:
     int rangeSumBST(TreeNode* root, int low, int high) {
-        vector<int>ans;
-            solve(root,ans);
-            int sum=0;
-            for(int i=0;i<ans.size();i++)
-            {
-                    if(ans[i]>=low && ans[i]<=high)
-                    {
-                            sum+=ans[i];
-                    }
-            }
-            return sum;
+            if(root==nullptr)
+                {
+                        return 0;
+                }
+            
+            return solve(root,low,high);
+           
+            
     }
 };
