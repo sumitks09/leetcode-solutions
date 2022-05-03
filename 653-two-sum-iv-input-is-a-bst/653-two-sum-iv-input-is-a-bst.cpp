@@ -25,16 +25,30 @@ public:
     bool findTarget(TreeNode* root, int k) {
         vector<int>ans;
             solve(ans,root);
-            for(int i=0;i<ans.size();i++)
+            
+           int i=0;
+           int j=ans.size()-1;
+            
+            while(i<j)
             {
-                    for(int j=i+1;j<ans.size();j++)
+                    int key=ans[i]+ans[j];
+                    
+                    if(key==k)
                     {
-                            if(ans[i]+ans[j]==k)
-                            {
-                                    return true;
-                            }
+                            return true;
                     }
-        }
+                    
+                    else if(key>k)
+                    {
+                            j--;
+                    }
+                    
+                    else
+                    {
+                            i++;
+                    }
+            }
             return false;
+                    
     }
 };
