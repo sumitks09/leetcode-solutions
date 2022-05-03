@@ -101,25 +101,23 @@ class Solution
     public:
     void flatten(Node *root)
     {
-        Node* curr=root;
-        while(curr!=nullptr)
-        {
-            if(curr->left!=nullptr)
-            {
-                
-            Node* pred=curr->left;
-            while(pred->right!=nullptr)
-            {
-             pred=pred->right;
-            }
-            pred->right=curr->right;
-             curr->right=curr->left;
-             curr->left=nullptr;
-        }
-        curr=curr->right;
+   Node* curr=root;
+   while(curr!=nullptr)
+   {
+       if(curr->left!=nullptr)
+       {
+           Node* pred=curr->left;
+           while(pred->right!=nullptr)
+           {
+               pred=pred->right;
+           }
+           pred->right=curr->right;
+           curr->right=curr->left;
+           curr->left=nullptr;
+       }
+       curr=curr->right;
+   }
     }
-}
-
 };
 
 // { Driver Code Starts.
