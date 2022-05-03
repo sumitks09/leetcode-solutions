@@ -29,19 +29,15 @@ public:
            set<int>s(ans.begin(),ans.end());
             set<int>:: iterator itr;
             int count=0;
-            if(s.size()!=0)
-            {
+            
            for(itr=s.begin();itr!=s.end();++itr)
            {
-                  
-                   if(count==1)
+                 if(count==1)
                    {
-                   int ans=*itr;
-                   return ans;
+                 return *itr;
                    }
                     count++;
-           }
-            }
-            return -1;
+      }
+         return -1;
     }
 };
