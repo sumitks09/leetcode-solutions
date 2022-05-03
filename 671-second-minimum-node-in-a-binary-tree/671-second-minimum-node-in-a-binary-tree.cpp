@@ -33,12 +33,13 @@ public:
             {
            for(itr=s.begin();itr!=s.end();++itr)
            {
-                   count++;
-                   if(count==2)
+                  
+                   if(count==1)
                    {
                    int ans=*itr;
                    return ans;
-           }
+                   }
+                    count++;
            }
             }
             return -1;
