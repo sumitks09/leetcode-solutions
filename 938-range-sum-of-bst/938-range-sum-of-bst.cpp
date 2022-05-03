@@ -10,34 +10,25 @@
  * };
  */
 class Solution {
-        int sum=0;
         private:
-        int solve(TreeNode* root, int low, int high)
+        void solve(TreeNode* root, int low, int high,int &sum)
         {
-          if(root)
-          {
-                 rangeSumBST(root->left,low,high);
-                  
-                 if(root->val>=low && root->val<=high)
-                   {
-                   sum+=root->val;
-                   }
-                  
-              rangeSumBST(root->right,low,high);
-          }
-        return sum;    
+                if(root==nullptr)
+                {
+                        return;
+                }
+                if(root->val>=low&&root->val<=high)
+                {
+                        sum=sum+root->val;
+                }
+                solve(root->left,low,high,sum);
+                solve(root->right,low,high,sum);
         }
-        
-        
 public:
     int rangeSumBST(TreeNode* root, int low, int high) {
-            if(root==nullptr)
-                {
-                        return 0;
-                }
-            
-            return solve(root,low,high);
-           
-            
+            int sum=0;
+            solve(root,low,high,sum);
+            return sum;
+        
     }
 };
