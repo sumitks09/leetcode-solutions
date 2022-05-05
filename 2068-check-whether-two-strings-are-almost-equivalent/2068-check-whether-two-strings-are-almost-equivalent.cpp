@@ -5,6 +5,10 @@ public:
             for(int i=0;i<word1.size();i++)
             {
                     memo[word1[i]]++;
+                    
+            }
+            for(int i=0;i<word2.size();i++)
+            {
                     memo[word2[i]]--;
             }
             
