@@ -27,7 +27,7 @@ public:
                     }
             return -1;
             */
-            
+            /*
             int i=0;
             int j=nums.size()-1;
             if(nums.size()==1)
@@ -63,5 +63,12 @@ public:
                    
             }
              return nums[i];
+             */
+            int result=0;
+            for(auto x:nums)
+            {
+                    result=result^x;
+            }
+            return result;
     }
 };
