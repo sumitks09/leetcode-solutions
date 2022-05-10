@@ -14,7 +14,7 @@ public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
             if(root==nullptr)
             {
-        root=new TreeNode(val);
+       TreeNode* root=new TreeNode(val);
                     return root;
             }
             
