@@ -8,12 +8,12 @@ class Solution
             {
 
                 int r = x % 10;
-                    if(ans>INT_MAX/10 or ans<INT_MIN/10)
-            {
-                return 0;
-            }
+                if (ans > INT_MAX / 10 or ans < INT_MIN / 10)
+                {
+                    return 0;
+                }
                 ans = ans *10 + r;
-                    
+
                 x = x / 10;
             }
 
