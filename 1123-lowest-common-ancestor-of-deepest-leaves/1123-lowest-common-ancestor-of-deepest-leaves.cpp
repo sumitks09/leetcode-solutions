@@ -37,7 +37,8 @@ public:
         TreeNode* left = lca(root->left,maxdepth-1);
         TreeNode* right = lca(root->right,maxdepth-1);
         
-        if(left && right) return root;
+if(left && right) 
+            return root;
         else return left ? left : right;
     }
     
