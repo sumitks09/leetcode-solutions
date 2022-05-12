@@ -8,36 +8,16 @@ using namespace std;
 class Solution{
 public:	
 	int search(int A[], int N){
-	   int i=0;
-	   int j=N-1;
-	   
-	   while(i<=j)
-	   {
-	       int mid=(i+j)/2;
-	   if(mid%2==0)
-	   {
-	       if(A[mid]==A[mid+1])
-	       {
-	           i=mid+1;
-	       }
-	       else
-	       {
-	           j=mid-1;
-	       }
-	   }
-	  else if(mid%2==1)
-	  {
-	      if(A[mid]==A[mid-1])
-	      {
-	          i=mid+1;
-	      }
-	      else
-	      {
-	          j=mid-1;
-	      }
-	  }
-	   }
-	   return A[i];
+	   unordered_map<int,int>mp;
+	    for(int i=0;i<N;i++){
+	        mp[A[i]]++;
+	    }
+	    for(auto it:mp){
+	        if(it.second==1){
+	            return it.first;
+	        }
+	    }
+	    return 0;
 	    
 	}
 };
