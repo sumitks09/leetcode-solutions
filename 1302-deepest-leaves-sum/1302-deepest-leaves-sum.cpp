@@ -10,36 +10,38 @@
  * };
  */
 class Solution {
-public:
-        int height(TreeNode* root)
+        private:
+        int depth(TreeNode* root)
+        {
+           if(root==nullptr)
+           {
+                   return 0;
+           }
+                int lh=1+depth(root->left);
+                int rh=1+depth(root->right);
+                return max(lh,rh);
+             }
+        private:
+        void summision(TreeNode* root,int height,int &sum)
         {
                 if(root==nullptr)
                 {
-                        return 0;
+                        return;
                 }
-                int lh=height(root->left);
-                int rh=height(root->right);
-                return 1+max(lh,rh);
-        }
-        int solve(TreeNode* root,int depth)
-        {
-                if(root==nullptr)
+             if(root->left==nullptr&&root->right==nullptr&&height==1)
             {
-                    return 0;
+                    sum+=root->val;
             }
-            int sum=0;
-            if(root->left==nullptr && root->right==nullptr && depth==1)
-            {
-                    return root->val;
-            }
-            sum+=solve(root->left,depth-1);
-            sum+=solve(root->right,depth-1);
-                return sum;
+                summision(root->left,height-1,sum);
+                summision(root->right,height-1,sum);
+                
         }
+public:
     int deepestLeavesSum(TreeNode* root) {
-        int depth = height(root);
-            int result=solve(root,depth);
-            return result;
-            
+            int sum=0;
+            int height=depth(root);
+            summision(root,height,sum);
+            return sum;
+        
     }
 };
