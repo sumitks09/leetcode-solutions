@@ -11,24 +11,25 @@
 class Solution
 {
     private:
-        void copyc(TreeNode *original, TreeNode *cloned, TreeNode *target,TreeNode * &ans) {
+        TreeNode* copyc(TreeNode *original, TreeNode *cloned, TreeNode *target,TreeNode * &ans) {
             if(cloned==nullptr)
             {
-                    return;
+                    return nullptr;
             }
             
             if(cloned->val==target->val)
             {
                     ans=cloned;
+                    return ans;
                     
             }
-            copyc(original,cloned->left,target,ans);
-            copyc(original,cloned->right,target,ans);
+           TreeNode* left= copyc(original,cloned->left,target,ans);
+            TreeNode* right= copyc(original,cloned->right,target,ans);
+                return ans;
         }
     public:
         TreeNode* getTargetCopy(TreeNode *original, TreeNode *cloned, TreeNode *target) {
-                 TreeNode* ans=nullptr;
-                copyc(original,cloned,target,ans);
+                 TreeNode* ans=copyc(original,cloned,target,ans);
                 return ans;
         }
 };
