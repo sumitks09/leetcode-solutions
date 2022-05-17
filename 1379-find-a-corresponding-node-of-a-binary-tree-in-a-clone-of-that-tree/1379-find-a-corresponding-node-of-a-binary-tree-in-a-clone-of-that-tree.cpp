@@ -23,8 +23,8 @@ class Solution
                     return ans;
                     
             }
-           TreeNode* left= copyc(original,cloned->left,target,ans);
-            TreeNode* right= copyc(original,cloned->right,target,ans);
+        copyc(original,cloned->left,target,ans);
+              copyc(original,cloned->right,target,ans);
                 return ans;
         }
     public:
