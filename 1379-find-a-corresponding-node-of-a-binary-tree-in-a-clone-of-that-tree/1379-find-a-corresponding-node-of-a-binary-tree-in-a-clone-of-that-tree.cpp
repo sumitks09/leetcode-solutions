@@ -23,13 +23,14 @@ class Solution
                     return ans;
                     
             }
-        copyc(original,cloned->left,target,ans);
+              copyc(original,cloned->left,target,ans);
               copyc(original,cloned->right,target,ans);
                 return ans;
         }
     public:
         TreeNode* getTargetCopy(TreeNode *original, TreeNode *cloned, TreeNode *target) {
-                 TreeNode* ans=copyc(original,cloned,target,ans);
+                 TreeNode* ans=nullptr;
+                copyc(original,cloned,target,ans);
                 return ans;
         }
 };
