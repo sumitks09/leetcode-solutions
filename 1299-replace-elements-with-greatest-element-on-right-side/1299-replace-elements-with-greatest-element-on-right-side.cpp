@@ -4,8 +4,8 @@ public:
             vector<int>ans;
             for(int i=0;i<arr.size()-1;i++)
             {
-                    int temp=*max_element(arr.begin()+i+1,arr.end());
-                    ans.push_back(temp);
+                
+                    ans.push_back( *max_element(arr.begin()+i+1,arr.end()));
             }
             
             ans.push_back(-1);
