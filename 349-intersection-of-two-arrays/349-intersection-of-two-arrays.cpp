@@ -1,17 +1,18 @@
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        sort(nums1.begin(),nums1.end());
-             sort(nums2.begin(),nums2.end());
-             vector<int>::iterator ip;
-             vector<int>::iterator ip2;
+            sort(nums1.begin(),nums1.end());
+            sort(nums2.begin(),nums2.end());
             
-             ip = unique(nums1.begin(), nums1.begin() + nums1.size());
-            ip2= unique(nums2.begin(), nums2.begin() + nums2.size());
+            vector<int>::iterator ip;
+            vector<int>::iterator ip2;
+            
+            ip=unique(nums1.begin(),nums1.end());
+            ip2=unique(nums2.begin(),nums2.end());
+            
             nums1.resize(distance(nums1.begin(),ip));
-            nums2.resize(distance(nums2.begin(),ip2));
-            
-            vector<int>ans;
+             nums2.resize(distance(nums2.begin(),ip2));
+         vector<int>ans;
                     
            unordered_map<int,int>memo;
             for(int i=0;i<nums1.size();i++)
