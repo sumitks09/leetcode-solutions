@@ -11,23 +11,28 @@
  */
 class Solution {
         private:
-        void solve(TreeNode* root,int k,vector<int>&ans)
+        void inorder(TreeNode* root,priority_queue<int,vector<int>,greater<int>>&minheap)
         {
-        if(root==nullptr)
-        {
-                return;
+                if(root==nullptr)
+                {
+                        return;
+                }
+                inorder(root->left,minheap);
+                minheap.push(root->val);
+                inorder(root->right,minheap);
         }
-                solve(root->left,k,ans);
-                ans.push_back(root->val);
-                solve(root->right,k,ans);
-        }
-        
 public:
     int kthSmallest(TreeNode* root, int k) {
-        vector<int>ans;
-            solve(root,k,ans);
-            //sort(ans.begin(),ans.end());
-            return ans[k-1];
+            priority_queue<int,vector<int>,greater<int>>minheap;
+            inorder(root,minheap);
             
+            while(k>1)
+            {
+                    minheap.pop();
+                    k--;
+            }
+            return minheap.top();
+            
+        
     }
 };
