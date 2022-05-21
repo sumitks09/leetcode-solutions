@@ -10,26 +10,35 @@
  * };
  */
 class Solution {
+       
+        
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
-        if(root==nullptr)
-        {
-                return root;
-        }
             
+            if(root==nullptr)
+            {
+                    return nullptr;
+            }
             if(root->val==val)
             {
                     return root;
             }
-            if(val<root->val)
+            TreeNode* left=nullptr;
+            left=searchBST(root->left,val);
+            TreeNode* right=nullptr;
+            right=searchBST(root->right,val);
+            if(left==nullptr && right==nullptr)
             {
-                return searchBST(root->left,val);    
+                    return nullptr;
             }
-            else
+            else if(left!=nullptr && right==nullptr)
             {
-                  return searchBST(root->right,val);
+                    return left;
             }
-                
-                    
+            return right;
+           
+            
+            
+        
     }
 };
