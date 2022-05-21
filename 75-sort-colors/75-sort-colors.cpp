@@ -7,24 +7,27 @@ public:
             int high=nums.size()-1;
             while(mid<=high)
             {
-                    switch(nums[mid])
-                    {
-                            case 0:
+                   if(nums[mid]==0)
+                   {
                                     swap(nums[low++],nums[mid++]);
                                     
-                                    break;
+                   }
                                     
-                                    case 1:
+                                   
+                    else if(nums[mid]==1)
+                    {
+                        mid++;    
+                    }
                                     
                                     
-                                   mid++;
-                                    break;
+                                   
                                     
-                                    case 2:
+                                    
+                                 else
+                                 {
                                     swap(nums[mid],nums[high--]);
-                                           
+                                 }         
                                     
                     }
-            }
     }
 };
