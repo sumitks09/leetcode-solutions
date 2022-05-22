@@ -14,17 +14,22 @@ class Solution
                 
                 if(temp.size()%2==0)
                 {
-                     double a=temp[((temp.size()/2)-1)];
-                     double b=temp[(temp.size()/2)];
-                ans=(a+b)/2;
+                          int i=0;
+                        int j=temp.size()-1;
+                        int mid=i+((j-i)/2);
+                        double a=temp[mid];
+                        double b=temp[mid+1];
+                        ans=(a+b)/2;
                         
                 }
                 else
                 {
-                      ans=temp[temp.size()/2];
+                      int i=0;
+                        int j=temp.size()-1;
+                        int mid=i+((j-i)/2);
+                        ans=temp[mid];
                 }
                         
                 return ans;
         }
 };
-
