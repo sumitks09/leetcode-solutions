@@ -32,40 +32,13 @@ class Solution {
         }
 public:
     bool isBalanced(TreeNode* root) {
+            if(root==nullptr)
+            {
+                    return true;
+            }
         height(root);
              return flag;
     }
 };
 
-
-/*class Solution {
-private:
-    int helper(TreeNode* root, bool &flag) {
-        if(root == NULL)
-            return 0;
-        
-        int left = helper(root->left, flag);
-        int right = helper(root->right, flag);
-        
-        // checking for balance
-        if(abs(left - right) > 1) {
-            flag = false;
-            return 0;
-        }
-        
-        // calculating height
-        return max(left, right) + 1;
-    }
-
-public:
-    bool isBalanced(TreeNode* root) {
-        bool ans = true;
-        
-        helper(root, ans);
-        
-        return ans;
-    }
-};
-*/
- 
 
