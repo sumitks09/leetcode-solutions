@@ -22,6 +22,7 @@ public:
                     }
             }
             */
+            /*
             // counting sort
             int count1=0;
             int count2=0;
@@ -53,7 +54,10 @@ public:
             while(count3--)
             {
                     nums.emplace_back(2);
-            }
+            }*/
         
+            
+            //simple sorting
+            sort(nums.begin(),nums.end());
     }
 };
