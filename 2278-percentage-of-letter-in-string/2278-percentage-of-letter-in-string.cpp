@@ -1,18 +1,17 @@
 class Solution {
 public:
     int percentageLetter(string s, char letter) {
-            float count=0;
-            float den=s.size();
+            int count=0;
         for(int i=0;i<s.size();i++)
         {
-                if(s[i]==letter)
+                if(letter==s[i])
                 {
                         count++;
                 }
         }
-           
-          int ans=(count*100)/den;
-           
+            
+            int ans=((count*100/s.size()));
             return ans;
+        
     }
 };
