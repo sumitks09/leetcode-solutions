@@ -11,7 +11,7 @@
  */
 class Solution
 {
-
+/*
     private:
         int totalnodes(TreeNode *root, int &count)
         {
@@ -53,7 +53,37 @@ class Solution
                         
                         return true;
                 }
-                cout<<addup<<" "<<temp2;
+                
                 return false;
+                */
+        
+        private:
+        bool ans(TreeNode *root,int temp)
+        {
+             bool ans1=true;
+                 bool ans2=true;
+                 if(root==nullptr)
+                 {
+                         return true;
+                 }
+        
+                 if(root->val!=temp)
+                 {
+                         return false;
+                 }
+                 
+                 ans1=ans(root->left,temp);
+                 ans2=ans(root->right,temp);
+                 return ans1&&ans2;   
+        }
+        
+        public:
+         bool isUnivalTree(TreeNode *root)
+        {
+              int temp=root->val;
+                 return ans(root,temp);
+                 
+        
+        
         }
 };
