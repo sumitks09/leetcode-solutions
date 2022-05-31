@@ -1,34 +1,35 @@
-class Solution {
-public:
-    vector<vector<int>> fourSum(vector<int>& nums, int target) {
-         sort(nums.begin(),nums.end());
-      int n=nums.size();
-       set<vector<int>> sv;
-        for(int i=0;i<n;i++)
+class Solution
+{
+    public:
+        vector<vector < int>> fourSum(vector<int> &nums, int target)
         {
-            for(int j=i+1;j<n;j++)
+            sort(nums.begin(), nums.end());
+            int n = nums.size();
+
+            set<vector < int>> s;
+            for (int i = 0; i < n; i++)
             {
-    
-                for(int k=j+1;k<n;k++)
-                { 
-                  
-                   int x = (long long)target - 
-                           (long long)nums[i]-
-                           (long long)nums[j]-(long long)nums[k];
-                   
-                        if(binary_search(nums.begin()+k+1,nums.end(),x)){
-                            vector<int> v;
-                            v.push_back(nums[i]);
-                            v.push_back(nums[j]);
-                            v.push_back(nums[k]);
-                            v.push_back(x);
-                                 sort(v.begin(),v.end());
-                            sv.insert(v);
+                for (int j = i + 1; j < n; j++)
+                {
+                    for (int k = j + 1; k < n; k++)
+                    {
+                        int x = (long long) target -
+                            (long long) nums[i] -
+                            (long long) nums[j] - (long long) nums[k];
+                        if (binary_search(nums.begin() + k + 1, nums.end(), x))
+                        {
+                            vector<int> ans;
+                            ans.push_back(nums[i]);
+                            ans.push_back(nums[j]);
+                            ans.push_back(nums[k]);
+                            ans.push_back(x);
+                            sort(ans.begin(), ans.end());
+                            s.insert(ans);
                         }
+                    }
                 }
             }
+            vector<vector < int>> ans2(s.begin(), s.end());
+            return ans2;
         }
-        vector<vector<int>> res(sv.begin(),sv.end());
-        return res;
-    }
 };
