@@ -4,18 +4,16 @@ class Solution
         vector<vector < int>> fourSum(vector<int> &nums, int target)
         {
             sort(nums.begin(), nums.end());
-            int n = nums.size();
-
             set<vector < int>> s;
+            int n = nums.size();
             for (int i = 0; i < n; i++)
             {
                 for (int j = i + 1; j < n; j++)
                 {
                     for (int k = j + 1; k < n; k++)
                     {
-                        int x = (long long) target -
-                            (long long) nums[i] -
-                            (long long) nums[j] - (long long) nums[k];
+                        int x = (long long) target - (long long) nums[i] - (long long) nums[j] - (long long) nums[k];
+
                         if (binary_search(nums.begin() + k + 1, nums.end(), x))
                         {
                             vector<int> ans;
@@ -29,7 +27,7 @@ class Solution
                     }
                 }
             }
-            vector<vector < int>> ans2(s.begin(), s.end());
-            return ans2;
+                vector<vector<int>>result(s.begin(),s.end());
+                                    return result;
         }
 };
