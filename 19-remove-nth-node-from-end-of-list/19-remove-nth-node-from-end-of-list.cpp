@@ -1,44 +1,45 @@
 /**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
+ *Definition for singly-linked list.
+ *struct ListNode {
+ *    int val;
+ *    ListNode * next;
+ *    ListNode() : val(0), next(nullptr) {}
+ *    ListNode(int x) : val(x), next(nullptr) {}
+ *    ListNode(int x, ListNode *next) : val(x), next(next) {}
+ *};
  */
-class Solution {
-public:
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
-            if(head->next==nullptr)
+class Solution
+{
+    private:
+        int totalnodes(ListNode *head)
+        {
+            int count = 0;
+            ListNode *temp = head;
+            while (temp != nullptr)
             {
-                    return nullptr;
+                count++;
+                temp = temp->next;
             }
-        ListNode* curr=head;
-             ListNode* temp=head;
-            int totalnodes=0;
-             int reqnodes=0;
-            while(curr!=nullptr)
-            {
-                    totalnodes++;
+            return count;
+        }
+    public:
+        ListNode* removeNthFromEnd(ListNode *head, int n)
+        {
+            int counter = totalnodes(head);
+                if((counter-n)==0)
+                {
+                    return head->next;    
+                }
+            ListNode *curr = head;
+
+            int nth_node = counter - n;
+            while (nth_node>1) {
+                    nth_node--;
                     curr=curr->next;
             }
-           
-           
-          reqnodes=totalnodes-n;
-            if(reqnodes==0)
-        {
-            return head->next;
+                curr->next=curr->next->next;
+                return head;
+                
+                
         }
-            while(reqnodes>1)
-            {
-                   
-                 temp=temp->next;   
-                     reqnodes--;
-            }
-            
-            temp->next=temp->next->next;
-            return head;
-    }
 };
