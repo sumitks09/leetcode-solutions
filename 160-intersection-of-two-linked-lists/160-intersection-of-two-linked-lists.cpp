@@ -12,10 +12,7 @@ class Solution
         ListNode* getIntersectionNode(ListNode *headA, ListNode *headB)
         {
                 
-                  if (headA == nullptr)
-            {
-                return nullptr;
-            }
+                
             ListNode *temp = headA;
             ListNode *temp2 = headB;
                 
