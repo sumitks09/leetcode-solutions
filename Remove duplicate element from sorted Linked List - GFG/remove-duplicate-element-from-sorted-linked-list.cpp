@@ -68,7 +68,7 @@ struct Node {
 Node *removeDuplicates(Node *head)
 {
  Node * temp=head;
- while(temp!=nullptr&&temp->next!=nullptr)
+ while(temp->next!=nullptr)
  {
  if(temp->data==temp->next->data)
  {
