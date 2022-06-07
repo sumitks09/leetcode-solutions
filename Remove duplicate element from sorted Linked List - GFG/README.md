@@ -1,5 +1,5 @@
 # Remove duplicate element from sorted Linked List
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a singly linked list consisting of <strong>N</strong> nodes. The task is to remove duplicates (nodes with duplicate values) from the given list (if exists).</span><br>
 <span style="font-size:18px"><strong>Note:</strong> Try not to use extra space. Expected time complexity is <strong>O(N)</strong>. The nodes are arranged in a <strong>sorted </strong>way.</span></p>
