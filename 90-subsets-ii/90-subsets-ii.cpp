@@ -1,47 +1,34 @@
-class Solution
-{
-    private:
-        void helper(vector<int> &nums, vector<int> ans, vector< vector< int>> &result, int n, int index,set<vector<int> > &set_vec)
+class Solution {
+        private:
+        void helper(vector<int> &temp, vector<vector< int >> &ans, int index, vector< int > &nums,set<vector<int>>&result)
         {
-            if (index == n)
+            if (index >= nums.size())
             {
-                set_vec.insert(ans);
+                result.insert(temp);
                 return;
             }
 
-        else
-        {
-                
-                //consider
+           	//include
+            temp.push_back(nums[index]);
+            helper(temp, ans, index + 1, nums,result);
 
-            ans.push_back(nums[index]);
-            helper(nums, ans, result, n, index + 1,set_vec);
-            ans.pop_back();
-                
-                
-                //ignore
-                
-           // while (index + 1 < n && nums[index] == nums[index + 1]) index++;
-            helper(nums, ans, result, n, index + 1,set_vec);
-
-           	
+           	//exclude
+            temp.pop_back();
+            helper(temp, ans, index + 1, nums,result);
         }
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+             sort(nums.begin(),nums.end());
+        vector<vector<int>>ans;
+            vector<int>temp;
+            set<vector<int>>result;
+            helper(temp,ans,0,nums,result);
+            
+            for(auto x:result)
+            {
+                    ans.push_back(x);
+            }
+            sort(ans.begin(),ans.end());
+            return ans;
     }
-
-    public:
-        vector<vector < int>> subsetsWithDup(vector<int> &nums)
-        {
-            sort(nums.begin(), nums.end());
-            int n = nums.size();
-            vector<int> ans;
-                set<vector<int> > set_vec;
-            vector<vector < int>> result;
-            helper(nums, ans, result, n, 0,set_vec);
-                for(auto i:set_vec)
-                {
-                        result.emplace_back(i);
-                }
-                 sort(result.begin(), result.end());
-            return result;
-        }
 };
