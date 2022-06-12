@@ -7,7 +7,7 @@ class Solution
             int count1 = 0;
             int count2 = 0;
             int count3 = 0;
-                int count4=0;
+            int count4 = 0;
             if (password.size() < 8)
             {
                 return false;
@@ -18,46 +18,30 @@ class Solution
                 {
                     count1++;
                 }
-                if (password[i] >= 65 && password[i] <= 90)
+                else if (password[i] >= 65 && password[i] <= 90)
                 {
                     count2++;
                 }
-                if (password[i] == '!' || password[i] == '@' || password[i] == '#' || password[i] == '$' || password[i] == '%' || password[i] == '^' || password[i] == '&' || password[i] == '*' || password[i] == '-' || password[i] == '+' || password[i] == '(' || password[i] == ')')
+               else if (password[i] >= 48 && password[i] <= 57)
                 {
                     count3++;
                 }
-                    
-                    if(password[i]>='0' && password[i]<='9')
-                    {
-                            count4++;
-                    }
-                     if(password[i]==password[i+1])
-                    {
-                            flag=false;
-                            return flag;
-                    }
-                    
-                    
+                else
+                {
+                    count4++;
+                }
+                if (password[i] == password[i + 1])
+                {
+                    flag = false;
+                    return flag;
+                }
             }
-                
-                if(count1<1)
-                {
-                        flag=false;
-                }
-                if(count2<1)
-                {
-                        flag=false;
-                }
-                if(count3<1)
-                {
-                        flag=false;
-                }
-                 if(count4<1)
-                {
-                        flag=false;
-                }
-                cout<<count1<<" "<<count2<<" "<<count3<<" "<<count4;
-               
-                return flag;
+cout<<count4<<" ";
+            if (count1 < 1 || count2<1 || count3<1 || count4<1)
+            {
+                flag = false;
+            }
+            
+            return flag;
         }
 };
