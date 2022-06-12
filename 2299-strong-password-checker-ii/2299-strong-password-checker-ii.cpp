@@ -4,10 +4,8 @@ class Solution
         bool strongPasswordCheckerII(string password)
         {
             bool flag = true;
-            int count1 = 0;
-            int count2 = 0;
-            int count3 = 0;
-            int count4 = 0;
+            int count1=0, count2=0 , count3 =0,count4 = 0;
+               
             if (password.size() < 8)
             {
                 return false;
@@ -36,7 +34,7 @@ class Solution
                     return flag;
                 }
             }
-cout<<count4<<" ";
+
             if (count1 < 1 || count2<1 || count3<1 || count4<1)
             {
                 flag = false;
