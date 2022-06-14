@@ -3,23 +3,26 @@ class Solution
     public:
         string kthDistinct(vector<string> &arr, int k)
         {
-            unordered_map<string, int> memo;
+         map<string,int>memo;
             for (int i = 0; i < arr.size(); i++)
             {
                 memo[arr[i]]++;
-            }
-            int p = 0;
-            for (int i = 0; i < arr.size(); i++)
-            {
-                if (memo[arr[i]] == 1)
+                }
+
+                vector<string> result;
+                for(int i=0;i<arr.size();i++)
+
                 {
-                    p++;
-                    if (p == k)
+                    if (memo[arr[i]] == 1)
                     {
-                        return arr[i];
+                        result.push_back(arr[i]);
                     }
                 }
+                
+                     if(result.size()<k)
+                     {
+                             return "";
+                     }
+                  return result[k-1];
             }
-            return "";
-        }
-};
+        };
