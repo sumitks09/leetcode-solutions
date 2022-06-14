@@ -1,46 +1,46 @@
 /**
- *Definition for singly-linked list.
- *struct ListNode {
- *int val;
- *ListNode * next;
- *ListNode() : val(0), next(nullptr) {}
- *ListNode(int x) : val(x), next(nullptr) {}
- *ListNode(int x, ListNode *next) : val(x), next(next) {}
- *};
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
  */
-class Solution
-{
-    public:
-        vector<int> nextLargerNodes(ListNode *head)
-        {
-            stack<int> st;
-            vector<int> ans;
-            ListNode *temp = head;
-
-            while (temp != nullptr)
+class Solution {
+public:
+    vector<int> nextLargerNodes(ListNode* head) {
+        vector<int>nums;
+            vector<int>ans;
+            stack<int>st;
+            while(head!=nullptr)
             {
-                ans.emplace_back(temp->val);
-                temp = temp->next;
+                    nums.push_back(head->val);
+                    head=head->next;
             }
-
-            vector<int> result;
-            int n = ans.size();
-           
-                 for(int i=ans.size()-1;i>=0;i--)
-        {
-            while(st.size()!=0 && st.top()<=ans[i])
+            
+            for(int i=nums.size()-1;i>=0;i--)
             {
-                st.pop();
+                    while(st.size()!=0 && st.top()<=nums[i])
+                    {
+                            st.pop();
+                    }
+                    if(st.size()==0)
+                    {
+                            ans.push_back(0);
+                             st.push(nums[i]);
+                    }
+                    else
+                    {
+                            ans.push_back(st.top());
+                            st.push(nums[i]);
+                    }
+                    
+                    
             }
-            if(st.size()==0)
-                result.push_back(0);
-            else
-                result.push_back(st.top());
-            st.push(ans[i]);
-        }
-                reverse(result.begin(),result.end());
-            return result;
-        }
+            reverse(ans.begin(),ans.end());
+            return ans;
+            
+    }
 };
-
-  
