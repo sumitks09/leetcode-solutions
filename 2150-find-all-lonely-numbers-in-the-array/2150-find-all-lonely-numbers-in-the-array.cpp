@@ -1,24 +1,37 @@
 class Solution {
 public:
     vector<int> findLonely(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
         vector<int>ans;
-    unordered_map<int,int>memo;
-        for(int i=0;i<nums.size();i++)
+        int temp=0;
+        if(nums.size()<=1)
         {
-            memo[nums[i]]++;
+            return nums;
         }
-        for(auto x:memo)
+        for(int i=1;i<nums.size()-1;i++)
         {
-            if(x.second==1)
+             temp=nums[i];
+            if(nums[i]==nums[i+1] || nums[i]==nums[i-1])
             {
-                if(memo.find(x.first-1)==memo.end() && memo.find(x.first+1)==memo.end())
-                {
-                    ans.push_back(x.first);
-                }
+                continue;
+            }
+            if(temp-1!=nums[i-1] && temp+1!=nums[i+1])
+            {
+                ans.push_back(temp);
             }
         }
+        temp=nums[0];
+        if(temp+1!=nums[1] && nums[0]!=nums[1])
+        {
+            ans.push_back(temp);
+        }
+        
+        temp=nums[nums.size()-1];
+        if(nums[nums.size()-1]!=nums[nums.size()-2] && temp-1!=nums[nums.size()-2])
+        {
+            ans.push_back(temp);
+        }
+        
         return ans;
-        
-        
     }
 };
