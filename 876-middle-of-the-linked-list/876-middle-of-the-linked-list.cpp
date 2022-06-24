@@ -14,10 +14,11 @@ public:
         ListNode* fast=head;
         ListNode* slow=head;
             while(fast->next!=nullptr && fast->next->next!=nullptr)
-            {
-                    fast=fast->next->next;
-                    slow=slow->next;
-            }
+         {
+             slow=slow->next;
+             fast=fast->next->next;
+         }
+       
             if(fast->next!=nullptr)
             {
             return slow->next;
