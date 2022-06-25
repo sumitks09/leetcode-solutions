@@ -8,9 +8,9 @@ public:
             {
                     if(memo.find(target-nums[i])!=memo.end())
                     {
-                            ans.assign({memo[target-nums[i]],i});
-                            //ans.push_back(memo[target-nums[i]]);
-                           // ans.push_back(i);
+                            //ans.assign({memo[target-nums[i]],i});
+                            ans.push_back(memo[target-nums[i]]);
+                           ans.push_back(i);
                             return ans;
                     }
                     memo[nums[i]]=i;
