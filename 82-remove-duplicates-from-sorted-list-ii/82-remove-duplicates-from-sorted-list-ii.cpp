@@ -18,29 +18,28 @@ class Solution
                   return head;
               }
             
-            ListNode* curr = head;
-              ListNode* temp=new  ListNode(-1);
-            ListNode* n = temp;
             
-            map<int,int>memo;
+             ListNode* curr= new ListNode(-1);
+             ListNode* temp=curr;
             
-           while(curr!=nullptr)
-           {
-               memo[curr->val]++;
-               curr=curr->next;
-           }
+         map<int,int>memo;
+            while(head!=nullptr)
+            {
+                memo[head->val]++;
+                head=head->next;
+            }
             
             for(auto x:memo)
             {
                 if(x.second==1)
                 {
-                     ListNode *temp = new ListNode(x.first);
-                    n->next=temp;
-                    n=n->next;
+                     ListNode* n=new ListNode(x.first);
+                    curr->next=n;
+                    curr=curr->next;
                 }
             }
             return temp->next;
             
-            
+           
         }
 };
