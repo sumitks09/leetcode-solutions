@@ -1,6 +1,6 @@
 class Solution {
 public:
-    static bool cmp(pair<string,int>a,pair<string,int>b)
+    const static bool cmp(const pair<string,int>&a,const pair<string,int>&b)
     {
         if(a.second>b.second)
         {
