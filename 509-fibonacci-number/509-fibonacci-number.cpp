@@ -1,29 +1,13 @@
-class Solution
-{
-    private:
-        int helper(int n, unordered_map<int, int> &memo)
+class Solution {
+public:
+    int fib(int n) {
+        if(n<=1)
         {
-            if (n <= 1)
-            {
-                return n;
-            }
-
-            int current_key = n;
-            if (memo.find(current_key) != memo.end())
-            {
-                return memo[current_key];
-            }
-            int a = helper(n - 1, memo);
-            int b = helper(n - 2, memo);
-
-            memo[current_key] = a + b;
-            return memo[current_key];
+            return n;
         }
-    public:
-        int fib(int n)
-        {
-
-            unordered_map<int, int> memo;;
-            return helper(n, memo);
-        }
+        int a=fib(n-1);
+        int b=fib(n-2);
+        return a+b;
+        
+    }
 };
