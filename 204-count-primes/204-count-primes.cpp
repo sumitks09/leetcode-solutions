@@ -1,43 +1,21 @@
-class Solution
-{
-    /*
-    private:
-    int isprime(int n)
-    {
-        if(n<=1)
+class Solution {
+public:
+    int countPrimes(int n) {
+        
+        vector<bool>vec(n+1,true);
+        vec[0]=vec[1]=false;
+        int count=0;
+        for(int i=2;i<n;i++)
         {
-            return 0;
-        }
-        for(int i=2;i < n;i++)
-         {
-
-            if(n%i==0)
-            {
-                return false;
-            }
-            }
-        return true;
-    }*/
-
-    public:
-        int countPrimes(int n)
+        if(vec[i]==true)
         {
-            vector<bool> prime(n + 1, true);
-            prime[0] = prime[1] = false;
-
-            int count = 0;
-            
-            for (int i = 2; i < n; i++)
+            count++;
+            for(int j=2*i;j<n;j+=i)
             {
-                if (prime[i] == 1)
-                {
-                    count++;
-                    for (int j = 2 * i; j < n; j += i)
-                    {
-                        prime[j] = false;
-                    }
-                }
+             vec[j]=false;   
             }
-            return count;
         }
+    }         
+              return count;
+    }
 };
