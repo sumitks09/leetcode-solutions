@@ -129,7 +129,7 @@ int subTreeSum(Node* root, int X,int& ans){
     sum+=subTreeSum(root->left,X,ans);
     sum+=subTreeSum(root->right,X,ans);
     if(sum==X) ans++;
-    // cout<<sum<<endl;
+     //cout<<sum<<endl;
     return sum;
 }
 int countSubtreesWithSumX(Node* root, int X)
