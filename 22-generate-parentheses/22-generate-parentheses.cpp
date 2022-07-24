@@ -1,34 +1,28 @@
 class Solution {
-public:
-    
-    vector<string>valid;
-    void create(string &s, int open, int close){
-    
-        if (open==0 && close==0)
+    private:
+    void helper(vector<string> &s,int oc,int cc,string temp,int n)
+    {
+        if(oc==n && cc==n)
         {
-        { //base case--> when we're left with no brackets
-            valid.push_back(s);
-        }
+            s.push_back(temp);
             return;
         }
-        if (open>0){  // if open brackets exists, then we need to use them
-            s.push_back('(');
-            
-            create(s,open-1,close); //calling the funcn with 1 reduced open bracket as we used it
-            s.pop_back(); // backtracking
+        if(oc<n)
+        {
+        helper(s,oc+1,cc,temp+'(',n);
         }
-        if (close>0){
-            if (open<close){ // open & close brackets must be same in no. In string we used, some open brackets, thus open must be smaller in no. to close
-                s.push_back(')');
-              
-                create(s,open,close-1);
-                s.pop_back();
-            }
+        if(cc<oc)
+        {
+        helper(s,oc,cc+1,temp+')',n);
         }
-    } 
+    }
+public:
     vector<string> generateParenthesis(int n) {
-        string s;
-        create(s,n,n);
-        return valid;
+        int oc=0;
+        int cc=0;
+        vector<string>s;
+        string temp="";
+        helper(s,oc,cc,temp,n);
+        return s;
     }
 };
