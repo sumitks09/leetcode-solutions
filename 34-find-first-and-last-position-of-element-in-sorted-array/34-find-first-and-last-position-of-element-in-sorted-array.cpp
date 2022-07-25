@@ -1,36 +1,16 @@
-class Solution {
-public:
-    vector<int> searchRange(vector<int>& nums, int target) {
-        pair<int,int>vec;
-        vec.first=-1;
-        vec.second=-1;
-        int count=0;
-        for(int i=0;i<nums.size();i++)
+class Solution
+{
+    public:
+        vector<int> searchRange(vector<int> &nums, int target)
         {
-            
-            if(target==nums[i])
-            {
-                count++;
-                if(count==1)
-                {
-                    vec.first=i;
-                }
-                if(count>=2)
-                {
-                    vec.second=i;
-                    
-                }
-            }
-        }
-        if(vec.first!=-1 && vec.second==-1)
-        {
-            return {vec.first,vec.first};
-        }
-        if(vec.first==-1 && vec.second!=-1)
-        {
-            return {vec.second,vec.second};
-        }
-        return {vec.first,vec.second};
+        auto low = lower_bound(nums.begin(),nums.end(),target);
+        auto  up = upper_bound(nums.begin(),nums.end(),target);
         
-    }
+        if(!binary_search(nums.begin(),nums.end(),target))    return {-1,-1};
+        
+        int first = low- nums.begin();
+        int last = up - nums.begin()-1;
+        
+        return {first ,last};
+        }
 };
