@@ -6,8 +6,7 @@ public:
             
             
             }
-       if((n&(n-1))==0)
-        return true;
-        return false;
+       return ((n&(n-1))==0);
+        
     }
 };
