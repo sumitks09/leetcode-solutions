@@ -3,20 +3,22 @@
 class Solution {
 public:
     string customSortString(string order, string s) {
-        map<char,int>m,m1;
+        map<char,int>memo,memo2;
         for(int i=0;i<s.size();i++)
-            m[s[i]]++;
+            memo[s[i]]++;
         for(int i=0;i<order.size();i++)
-            m1[order[i]]++;
+            memo2[order[i]]++;
+        
         string ans="";
+        
         for(int i=0;i<order.size();i++)
         {
-            int k=m[order[i]];
+            int k=memo[order[i]];
             while(k--)
                 ans+=order[i];
         }
         for(int i=0;i<s.size();i++)
-            if(!m1[s[i]])
+            if(!memo2[s[i]])
                 ans+=s[i];
         return ans;
     }
