@@ -1,43 +1,36 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        vector<int>num(2,-1);
+        pair<int,int>vec;
+        vec.first=-1;
+        vec.second=-1;
         int count=0;
         for(int i=0;i<nums.size();i++)
         {
-            if(nums[i]==target)
+            
+            if(target==nums[i])
             {
                 count++;
+                if(count==1)
+                {
+                    vec.first=i;
+                }
+                if(count>=2)
+                {
+                    vec.second=i;
+                    
+                }
             }
         }
-        for(int i=0;i<nums.size();i++)
+        if(vec.first!=-1 && vec.second==-1)
         {
-            if(nums[i]==target && count==1)
-            {
-                num[0]=i;
-                num[1]=i;
-            }
+            return {vec.first,vec.first};
         }
-        
-        for(int s=0;s<nums.size();s++)
+        if(vec.first==-1 && vec.second!=-1)
         {
-            if(nums[s]==target && count>=2)
-            {
-               num[0]=s;
-                break;
-            }
+            return {vec.second,vec.second};
         }
-        for(int end=num[0]+1;end<nums.size();end++)
-        {
-            if(nums[end]==target && count>=2)
-            {
-            num[1]=end;
-             
-            }
-        }
-        
-        
-        return num;
+        return {vec.first,vec.second};
         
     }
 };
