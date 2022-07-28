@@ -8,21 +8,12 @@ public:
         cin.tie(nullptr);
         
         ucmap memo;
-       
+      
+        for(const auto &x:s) memo[x]++;
         
-        for(const auto &x:s)
-        {
-            memo[x]++;
-        }
-        for(const auto &y:t)
-        {
-            memo[y]--;
-        }
-        for(auto z:memo)
-        {
-          if(z.second>0||z.second<0)
-          return false;
-        }
+        for(const auto &y:t) memo[y]--;
+        
+        for(auto z:memo) if(z.second>0||z.second<0) return false;
         return true;
         
     }
