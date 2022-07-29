@@ -13,10 +13,7 @@ public:
         
         for(auto x:sentence) memo[x]++;
         
-        for(auto i:memo)
-        {   
-            if(i.second>0) count++;
-         }
+        for(auto i:memo)  if(i.second>0) count++;
         if(count==26) return true;
         return false;
 
