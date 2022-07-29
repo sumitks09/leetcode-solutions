@@ -8,7 +8,7 @@ public:
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
         
-        int count=0;
+        auto count=0;
         ucmap;
         
         for(auto x:sentence) memo[x]++;
