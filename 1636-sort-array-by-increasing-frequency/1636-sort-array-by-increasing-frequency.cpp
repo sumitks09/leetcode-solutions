@@ -1,45 +1,38 @@
+#define uimap unordered_map<int,int>memo
+#define pb push_back
+#define vpii vector<pair<int,int>>
+#define vi vector<int>
 class Solution {
-public:
-    static bool cmp(pair<int,int>a,pair<int,int>b)
+    
+    private:
+    static bool cmp(pair<int,int>&x1,pair<int,int>&x2)
     {
-        if(a.second==b.second)
-        {
-            if(a.first>b.first)
-            {
-                return true;
-            }
-            return false;
-        }
-      else if(a.second<b.second)
-      {
-          return true;
-      }
-         
-        return false;
+       if(x1.second==x2.second) return x1.first>x2.first;
+        return x1.second<x2.second;
     }
+public:
     vector<int> frequencySort(vector<int>& nums) {
-        unordered_map<int,int>memo;
-        for(int i=0;i<nums.size();i++)
+        uimap;
+        vpii pq;
+        vi result;
+        for(const auto &x:nums)
         {
-            memo[nums[i]]++;
+            memo[x]++;
         }
         
-        vector<pair<int,int>>vec;
         for(auto it=memo.begin();it!=memo.end();it++)
-        {
-            vec.push_back(make_pair(it->first,it->second));
-        }
+            pq.pb({it->first,it->second});
         
-        sort(vec.begin(),vec.end(),cmp);
-        
-        vector<int>x;
-        for(auto y:vec)
+        sort(pq.begin(),pq.end(),cmp);
+        for(int i=0;i<pq.size();i++)
         {
-            while(y.second--)
+            while(pq[i].second--)
             {
-            x.push_back(y.first);
-            }
+            result.pb(pq[i].first);
+           }
         }
-        return x;
+        return result;
+
+        
     }
 };
