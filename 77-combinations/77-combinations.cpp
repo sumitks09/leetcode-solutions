@@ -26,6 +26,9 @@ class Solution {
     }
 public:
     vector<vector<int>> combine(int n, int k) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        
         dvi result;
         vi vec;
         vi nums;
