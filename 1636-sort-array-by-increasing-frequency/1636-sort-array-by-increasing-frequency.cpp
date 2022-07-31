@@ -14,7 +14,7 @@ public:
     vector<int> frequencySort(vector<int>& nums) {
         uimap;
         vpii pq;
-        vi result;
+       // vi result;
         for(const auto &x:nums)
         {
             memo[x]++;
@@ -24,14 +24,16 @@ public:
             pq.pb({it->first,it->second});
         
         sort(pq.begin(),pq.end(),cmp);
+       nums.clear();
         for(int i=0;i<pq.size();i++)
         {
             while(pq[i].second--)
             {
-            result.pb(pq[i].first);
+           nums.pb(pq[i].first);
+                
            }
         }
-        return result;
+        return nums;
 
         
     }
