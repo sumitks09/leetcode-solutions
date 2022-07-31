@@ -1,30 +1,35 @@
+#define pb push_back
+#define vpii vector<pair<int,int>>
+#define vi vector<int>
 class Solution {
     private:
-    static bool cmp(const pair<int,int>&a , const pair<int,int>&b)
-    {
-         if(a.second==b.second) return a.first>b.first;
-         return a.second>b.second;
-       
-       
-    }
+    
+    static bool cmp(const pair<int,int>&x1,const pair<int,int>&x2)
+    { 
+        if(x1.second==x2.second) return x1.first>x2.first;
+       return x1.second>x2.second;
         
+    }
 public:
     vector<int> getStrongest(vector<int>& arr, int k) {
-        int n=arr.size();
-        vector<pair<int,int>>pq;
-        sort(arr.begin(),arr.end());
         
-        int median=arr[((n-1)/2)];
-        for(int i=0;i<n;i++)
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        auto n=arr.size();
+        sort(arr.begin(),arr.end());
+        auto median=arr[((n-1)/2)];
+        vpii pq;
+        vi vec;
+        for(const auto &x:arr)
         {
-            pq.push_back({arr[i],abs(arr[i]-median)});
+            pq.pb({x,abs(x-median)});
         }
         sort(pq.begin(),pq.end(),cmp);
-        vector<int>result;
-        
         for(int i=0;i<k;i++)
-            result.push_back(pq[i].first);
-        return result;
-            
+        {
+            vec.pb(pq[i].first);
+        }
+        return vec;
+        
     }
 };
