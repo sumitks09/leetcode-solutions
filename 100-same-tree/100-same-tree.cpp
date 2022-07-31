@@ -10,31 +10,33 @@
  * };
  */
 class Solution {
-public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-            bool ans1=false;
-            bool ans2=false;
-            
-        if(p==nullptr && q==nullptr)
+    bool helper(TreeNode* p, TreeNode* q)
+    {
+          if(p==nullptr && q==nullptr)
         {
                 return true;
         }
-            if(p!=nullptr && q==nullptr)
-            {
-                    return false;
-            }
-            if(p==nullptr && q!=nullptr)
-            {
-                    return false;
-            }
-            if(p->val!=q->val)
-            {
+       
+        if(p!=nullptr && q==nullptr)
+        {
+           return false;
+        }
+        if(p==nullptr && q!=nullptr)
+        {
             return false;
-            }
+        }
+         if(p->val!=q->val)
+        {
             
-           return isSameTree(p->left,q->left)&&isSameTree(p->right,q->right);
-            
-            
-            
+            return false;
+        }
+        return helper(p->left,q->left) && helper(p->right,q->right);
+    }
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+       
+        return helper(p,q);
+        
+        
     }
 };
