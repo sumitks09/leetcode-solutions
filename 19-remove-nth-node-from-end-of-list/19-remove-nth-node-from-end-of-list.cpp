@@ -1,45 +1,36 @@
 /**
- *Definition for singly-linked list.
- *struct ListNode {
- *    int val;
- *    ListNode * next;
- *    ListNode() : val(0), next(nullptr) {}
- *    ListNode(int x) : val(x), next(nullptr) {}
- *    ListNode(int x, ListNode *next) : val(x), next(next) {}
- *};
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
  */
-class Solution
-{
-    private:
-        int totalnodes(ListNode *head)
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if(head==nullptr || head->next==nullptr) return nullptr;
+        ListNode* temp=head;
+        ListNode* temp2=head;
+        int count=0;
+        while(temp!=nullptr)
         {
-            int count = 0;
-            ListNode *temp = head;
-            while (temp != nullptr)
-            {
-                count++;
-                temp = temp->next;
-            }
-            return count;
+            count++;
+            temp=temp->next;
         }
-    public:
-        ListNode* removeNthFromEnd(ListNode *head, int n)
+        if(count==n) return head->next;
+       int oricount=count-n;
+        while(oricount>1)
         {
-            int counter = totalnodes(head);
-                if((counter-n)==0)
-                {
-                    return head->next;    
-                }
-            ListNode *curr = head;
-
-            int nth_node = counter - n;
-            while (nth_node>1) {
-                    nth_node--;
-                    curr=curr->next;
-            }
-                curr->next=curr->next->next;
-                return head;
-                
-                
+            temp2=temp2->next;
+            oricount--;
         }
+        temp2->next=temp2->next->next;
+        return head;
+        
+        
+        
+    }
 };
