@@ -10,21 +10,20 @@
  * };
  */
 class Solution {
-    void helper(TreeNode* root, vector<int> &ans, int i){
-        if(root == NULL) return;
-        
-        if(i == ans.size())
-            ans.push_back(root->val);
-        
-		
-        helper(root->right, ans, i+1);
-        helper(root->left, ans, i+1);
+    void helper(TreeNode* root,vector<int>&ans,int current)
+    {
+        if(root==nullptr)
+        {
+            return ;
+        }
+        if(current==ans.size()) ans.push_back(root->val);
+        helper(root->right,ans,current+1);
+        helper(root->left,ans,current+1);
     }
-    
-public:   
+public:
     vector<int> rightSideView(TreeNode* root) {
-        vector<int> ans;
-        helper(root, ans, 0);
+        vector<int>ans;
+        helper(root,ans,0);
         return ans;
     }
 };
