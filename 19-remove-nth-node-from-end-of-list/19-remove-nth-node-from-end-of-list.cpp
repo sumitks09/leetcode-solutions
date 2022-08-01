@@ -11,6 +11,9 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        
         if(head==nullptr || head->next==nullptr) return nullptr;
         ListNode* temp=head;
         ListNode* temp2=head;
