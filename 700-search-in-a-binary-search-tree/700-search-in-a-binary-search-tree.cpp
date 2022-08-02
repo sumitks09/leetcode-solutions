@@ -10,35 +10,25 @@
  * };
  */
 class Solution {
-       
-        
+    private:
+   void helper(TreeNode* root,int key,TreeNode* &temp)
+    {
+        if(root==nullptr)
+        {
+            return;
+        }
+        if(root->val==key) 
+        {
+            temp=root; 
+            return;
+        }
+        helper(root->left,key,temp);
+        helper(root->right,key,temp);
+    }
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
-            
-            if(root==nullptr)
-            {
-                    return nullptr;
-            }
-            if(root->val==val)
-            {
-                    return root;
-            }
-            TreeNode* left=nullptr;
-            left=searchBST(root->left,val);
-            TreeNode* right=nullptr;
-            right=searchBST(root->right,val);
-            if(left==nullptr && right==nullptr)
-            {
-                    return nullptr;
-            }
-            else if(left!=nullptr && right==nullptr)
-            {
-                    return left;
-            }
-            return right;
-           
-            
-            
-        
+        TreeNode* temp=nullptr;
+        helper(root,val,temp);
+        return temp;
     }
 };
