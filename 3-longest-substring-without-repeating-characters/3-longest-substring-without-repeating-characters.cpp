@@ -8,7 +8,7 @@ class Solution
 
             for (int i = 0; i < s.size(); i++)
             {
-                unordered_set<int> set;
+                unordered_set<char> set;
                 for (int j = i; j < s.size(); j++)
                 {
                     if (set.find(s[j]) != set.end())
