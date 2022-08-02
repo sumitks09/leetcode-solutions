@@ -27,6 +27,9 @@ class Solution {
     }
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        
         TreeNode* temp=nullptr;
         helper(root,val,temp);
         return temp;
