@@ -13,8 +13,9 @@ public:
                     break;
                 }
                 se.insert(s[j]);
-                ans=max(ans,(int)se.size());
+                
             }
+            ans=max(ans,(int)se.size());
         }
         return ans;
     }
