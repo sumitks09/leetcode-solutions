@@ -1,32 +1,32 @@
 class Solution {
     private:
-    void helper(vector<int>& candidates,int index,int target,vector<vector<int>>&result,vector<int>&vec)
+    void helper(vector<int>&nums,vector<vector<int>>&vec,vector<int>&ans,int current,int target)
     {
-        if(index==candidates.size())
+        if(current==nums.size())
         {
             if(target==0)
             {
-                result.push_back(vec);
+                vec.push_back(ans);
             }
             return;
         }
-        if(candidates[index]<=target)
+        
+        if(nums[current]<=target)
         {
-            vec.push_back(candidates[index]);
-            helper(candidates,index,target-candidates[index],result,vec);
-            vec.pop_back();
+            ans.push_back(nums[current]);
+            helper(nums,vec,ans,current,target-nums[current]);
+            ans.pop_back();
         }
-        helper(candidates,index+1,target,result,vec);
-            
+        //exclude
+        helper(nums,vec,ans,current+1,target);
+        
     }
 public:
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
+    vector<vector<int>> combinationSum(vector<int>& nums, int target) {
+        vector<vector<int>>vec;
+        vector<int>ans;
+        helper(nums,vec,ans,0,target);
+        return vec;
         
-        vector<vector<int>>result;
-        vector<int>vec;
-        helper(candidates,0,target,result,vec);
-        return result;
     }
 };
