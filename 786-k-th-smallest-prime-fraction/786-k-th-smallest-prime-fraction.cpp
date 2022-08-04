@@ -2,8 +2,7 @@ class Solution {
     class comp{
     public:
         bool operator()(pair<int,int> a,pair<int,int> b){
-			//// a/b < c/d  ==> a*d < c*b //////
-			///// doing this to avoid comparing doubles //////////
+			
             return a.first*b.second < a.second*b.first;
         }
     };
