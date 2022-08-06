@@ -14,7 +14,7 @@ public:
                     }
                     else
                             
-                    j++;
+                j++;
             }
         
     }
