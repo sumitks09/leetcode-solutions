@@ -16,7 +16,7 @@ public:
                 
         }
         while(count--) ans.push_back(0);
-        nums.clear();
+       // nums.clear();
         nums=ans;
         //return ans;
             
