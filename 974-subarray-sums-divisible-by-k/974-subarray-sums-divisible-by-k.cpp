@@ -7,11 +7,10 @@ public:
         int i = 0, count = 0;
         int curr_sum = 0;
         unordered_map<int, int> mp;
-        mp[0] = 1;// this is done because initial cumulative sum = 0 and that sum%k will be equal to 0 always
-        
+        mp[0] = 1;
         while(i<n)
         {
-            curr_sum+= A[i++];
+            curr_sum+= A[i];
             int rem = curr_sum % K;
             if(rem<0) rem += K;
             
@@ -19,7 +18,7 @@ public:
                 count+=mp[rem];
             
             mp[rem]++;
-            
+            i++;
         }
         return count;
     }
