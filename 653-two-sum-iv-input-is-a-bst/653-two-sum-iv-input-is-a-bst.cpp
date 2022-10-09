@@ -10,45 +10,29 @@
  * };
  */
 class Solution {
-        private:
-        void solve(vector<int>&ans,TreeNode* root)
-        {
-                if(root==nullptr)
-                {
-                        return;
-                }
-                solve(ans,root->left);
-                ans.push_back(root->val);
-                solve(ans,root->right);
-        }
+    private:
+    void helper(vector<int>&ans,TreeNode* root,unordered_map<int,int>&memo)
+    {
+        if(root==nullptr) return;
+        helper(ans,root->left,memo);
+        ans.push_back(root->val);
+       // memo[root->val]++;
+        helper(ans,root->right,memo);
+    }        
 public:
     bool findTarget(TreeNode* root, int k) {
         vector<int>ans;
-            solve(ans,root);
-            
-           int i=0;
-           int j=ans.size()-1;
-            
-            while(i<j)
+        unordered_map<int,int>memo;
+        helper(ans,root,memo);
+        
+        for(int i=0;i<ans.size();i++)
+        {
+            if(memo.find(k-ans[i])!=memo.end())
             {
-                    int key=ans[i]+ans[j];
-                    
-                    if(key==k)
-                    {
-                            return true;
-                    }
-                    
-                    else if(key>k)
-                    {
-                            j--;
-                    }
-                    
-                    else
-                    {
-                            i++;
-                    }
+                return true;
             }
-            return false;
-                    
+            memo[ans[i]]++;
+        }
+        return false;
     }
 };
