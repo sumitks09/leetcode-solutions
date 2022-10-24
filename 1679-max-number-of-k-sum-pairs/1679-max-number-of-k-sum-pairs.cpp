@@ -8,12 +8,13 @@ public:
             if(memo[k-nums[i]]>0)
             {
                 memo[k-nums[i]]--;
+                memo[nums[i]]--;
                 cnt++;
             }
-            else
-            {
+            
+            
                 memo[nums[i]]++;
-            }
+            
         }
         return cnt;
             
