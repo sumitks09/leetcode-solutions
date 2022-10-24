@@ -5,11 +5,14 @@ public:
         int cnt=0;
         for(int i=0;i<nums.size();i++)
         {
-            if(memo[k-nums[i]]>0)
+            if (memo.find(k-nums[i])!=memo.end())
             {
-                memo[k-nums[i]]--;
-                memo[nums[i]]--;
+                if(memo[k-nums[i]]>0)
+                {
+                 memo[k-nums[i]]--;
+                 memo[nums[i]]--;
                 cnt++;
+            }
             }
             
             
